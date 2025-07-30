@@ -1,4 +1,4 @@
-# ProcessadorV1 - Simulação em Verilog
+# ProcessadorV2 - Simulação em Verilog
 
 Este projeto contém a implementação de um processador simples em Verilog, com testes automatizados e visualização das simulações.
 
