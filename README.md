@@ -19,7 +19,20 @@ ProcessadorV1/
 - [GTKWave](http://gtkwave.sourceforge.net/)
 
 ## Como usar
-
+1. **Edite o arquivo `instruction_memory.v`**:
+   - Localize a seção comentada `// Programa vai aqui`
+   - Insira suas instruções no formato:
+     ```verilog
+     16'h0000: instruction = 16'b101_000_0000000101;  // LDI r0, 5
+     16'h0001: instruction = 16'b000_000_001_0000000; // ADD r0, r1
+     16'h0002: instruction = 16'b011_000_0000000000;   // HALT
+     ```
+   - Mantenha o `default` no final para instruções não definidas
+     
+2. **Formato das instruções**:
+   - Use o formato: `16'h[ENDEREÇO]: instruction = 16'b[OPCODE][OPERANDOS];`
+   - Endereços devem ser sequenciais (0x0000, 0x0001, etc.)
+   - Inclua um `HLT` (011) no final do programa
 
 ## Conjunto de Instruções
 
