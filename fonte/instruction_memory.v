@@ -5,6 +5,7 @@ module instruction_memory (
 
     always @(*) begin
         case (address)
+        // Programa vai aqui --------------------------------------------------------------------------------
             // Inicialização
             16'h0000: instruction = 16'b101_000_0000000000;  // ldi r0, #0   (soma = 0)
             16'h0001: instruction = 16'b101_001_0000000101;  // ldi r1, #5   (contador = 5)
@@ -31,7 +32,7 @@ module instruction_memory (
             
             // NOVO: Finalizar programa
             16'h000E: instruction = 16'b011_000_0000000000;  // halt         (finaliza programa)
-            
+        // -------------------------------------------------------------------------------------------------------   
             default: instruction = 16'b000_000_000_0000000;   // NOP
         endcase
     end
