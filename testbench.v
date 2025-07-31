@@ -19,13 +19,13 @@ module testbench;
     // Mostra saídas do bus
     always @(posedge clock) begin
         if (p.bus_enable) begin
-            $display("OUTPUT: %0d", bus);
+            $display("Saída: %0d", bus);
         end
     end
     
     // Detecta halt automaticamente
     always @(posedge halt) begin
-        $display("\n*** PROGRAMA FINALIZADO (HALT detectado) ***");
+        $display("\n*** PROGRAMA FINALIZADO ***");
         #2 $finish;  // Pequena pausa antes de finalizar
     end
     
@@ -35,9 +35,7 @@ module testbench;
         // Reset inicial
         #1 resetn = 1'b1;  // Ativa reset
         #2 resetn = 1'b0;  // Desativa reset - processador começa
-        
-        $display("Processador iniciado. Aguardando HALT...");
-        
+                
         // Timeout de segurança (caso esqueça o HALT)
         #1000 begin
             $display("\nTIMEOUT: Programa não finalizou em 1000 ciclos!");
