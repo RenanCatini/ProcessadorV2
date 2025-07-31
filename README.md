@@ -56,8 +56,8 @@ Aqui está a seção de instruções reformatada conforme seu exemplo:
 // LDI r3, 5 → 101 011 0000000101
 16'b101_011_0000000101
 
-// JMP -4 → 111 000 1111111100 (complemento de 2)
-16'b111_000_1111111100
+// BNE -3 → 110 000 1111111101 (complemento de 2)
+16'b110_000_1111111101;
 ```
 
 Observações:
