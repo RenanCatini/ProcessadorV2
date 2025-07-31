@@ -12,7 +12,8 @@
 module processor (
     input clock,
     input resetn,
-    output wire [15:0] bus
+    output wire [15:0] bus,
+    output wire halt    // NOVO: sinal de halt para o testbench
 );
 
     // Fios existentes
@@ -57,9 +58,9 @@ module processor (
     // O PC já aponta para a próxima instrução, então: PC_atual + deslocamento
     assign new_pc = pc_out + imm;
 
-    // Instanciar unidade de controle (usando instrução da memória)
+    // Instanciar unidade de controle (agora com halt)
     unidControle UDC (
-        .instrucao(instruction),    // Mudança: usa instrução da memória
+        .instrucao(instruction),
         .resetn(resetn), 
         .step(step), 
         .OpSelect(OpSelect), 
@@ -69,9 +70,10 @@ module processor (
         .clear(clear), 
         .selReg(selReg), 
         .bus_enable(bus_enable),
-        .pc_enable(pc_enable),      // Novo
-        .pc_load(pc_load),          // Novo
-        .mux_out(mux_out)           // Novo: para verificação do BNE
+        .pc_enable(pc_enable),
+        .pc_load(pc_load),
+        .halt(halt),              // NOVO: conecta sinal halt
+        .mux_out(mux_out)
     );
 
     // Instanciar registradores (sem mudanças)
@@ -100,7 +102,7 @@ module processor (
     // Instanciar a ULA (sem mudanças)
     ULA ula (A_out, mux_out, OpSelect, ula_out);
 
-    // Saida do barramento (sem mudanças)
-    assign bus = (bus_enable) ? mux_out : 16'b0;
+    // Saida do barramento - mostra linha "desligada" quando bus_enable = 0
+    assign bus = (bus_enable) ? mux_out : 16'hZZZZ;
     
 endmodule
