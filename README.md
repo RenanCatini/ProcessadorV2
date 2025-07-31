@@ -31,8 +31,7 @@ Aqui está a seção de instruções reformatada conforme seu exemplo:
 | **SUB Rx, Ry** | `001` | Tipo R | Rx ← [Rx] - [Ry] | Subtrai Ry de Rx |
 | **NAN Rx, Ry** | `010` | Tipo R | Rx ← [Rx] ~& [Ry] | Operação NAND bit a bit |
 | **OUT Rx** | `100` | Tipo O | Bus ← [Rx] | Mostra valor de Rx no barramento |
-| **JMP #D** | `111` | Tipo J | PC ← PC + 1 + D | Salto relativo |
-| **BNE Rx, #D** | `110` | Tipo I | Se Rx ≠ D: PC ← PC + 1 + D | Salto condicional |
+| **BNE Rx, #D** | `110` | Tipo I | Se Rx ≠ D: PC ← PC + D | Salto condicional |
 | **HLT** | `011` | Tipo O | Para execução | Finaliza o processador |
 
 ### Formatos de Instrução:
@@ -47,12 +46,6 @@ Aqui está a seção de instruções reformatada conforme seu exemplo:
    ```
    15 14 13 12 11 10 09 08 07 06 05 04 03 02 01 00
    | Opcode |  Rx  |         Valor Imediato       |
-   ```
-
-3. **Tipo J (Jump)**:
-   ```
-   15 14 13 12 11 10 09 08 07 06 05 04 03 02 01 00
-   | Opcode | Não usado |   Deslocamento (10 bits)  |
    ```
 
 ### Exemplo de Codificação:
