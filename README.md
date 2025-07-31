@@ -24,8 +24,9 @@ ProcessadorV1/
    - Insira suas instruções no formato:
      ```verilog
      16'h0000: instruction = 16'b101_000_0000000101;  // LDI r0, 5
-     16'h0001: instruction = 16'b000_000_001_0000000; // ADD r0, r1
-     16'h0002: instruction = 16'b011_000_0000000000;   // HALT
+     16'h0001: instruction = 16'b101_001_0000000001;  // LDI r0, 1
+     16'h0002: instruction = 16'b000_000_001_0000000; // ADD r0, r1
+     16'h0003: instruction = 16'b011_000_0000000000;   // HALT
      ```
    - Mantenha o `default` no final para instruções não definidas
      
