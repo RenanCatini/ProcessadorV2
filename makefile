@@ -25,11 +25,9 @@ $(DIR):
 	@mkdir -p $(DIR)
 
 $(OUTPUT): $(SRC) $(SOURCES) | $(DIR)
-	@echo "Compilando com novos módulos (PC e Memória)..."
 	@iverilog -I$(SRC_DIR) -o $(OUTPUT) $(SRC)
 
 run: $(OUTPUT)
-	@echo "Executando simulação..."
 	@vvp $(OUTPUT)
 
 wave: run

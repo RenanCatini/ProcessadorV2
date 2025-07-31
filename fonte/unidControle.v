@@ -31,7 +31,7 @@ decode_reg reg_decoder (RX, RX_decoded);
 parameter ADD = 3'b000;
 parameter SUB = 3'b001;
 parameter NAN = 3'b010;
-parameter HLT = 3'b011;  // NOVO: instrução HALT
+parameter HLT = 3'b011;  
 parameter OUT = 3'b100;
 parameter LDI = 3'b101;
 parameter BNE = 3'b110;

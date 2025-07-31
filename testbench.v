@@ -4,7 +4,7 @@ module testbench;
     reg clock = 0;
     reg resetn = 1;
     wire [15:0] bus;
-    wire halt;  // NOVO: recebe sinal de halt do processador
+    wire halt;  
     
     // Clock de 2 unidades de tempo (período = 2)
     always #1 clock = !clock;
@@ -19,18 +19,18 @@ module testbench;
     // Mostra saídas do bus
     always @(posedge clock) begin
         if (p.bus_enable) begin
-            $display("Saída: %0d", bus);
+            $display("Saída: %0d", $signed(bus));
         end
     end
     
     // Detecta halt automaticamente
     always @(posedge halt) begin
         $display("\n*** PROGRAMA FINALIZADO ***");
-        #2 $finish;  // Pequena pausa antes de finalizar
+        #2 $finish;
     end
     
     initial begin
-        $display("=== SIMULAÇÃO INICIADA ===");
+        $display("*** SIMULAÇÃO INICIADA ***\n");
         
         // Reset inicial
         #1 resetn = 1'b1;  // Ativa reset
