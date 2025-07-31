@@ -13,7 +13,7 @@ module instruction_memory (
             // Loop: r0 = r0 + r1, depois r1--
             16'h0003: instruction = 16'b000_000_001_0000000; // add r0, r1   (soma += contador)
             16'h0004: instruction = 16'b001_001_010_0000000; // sub r1, r2   (contador--)
-            16'h0005: instruction = 16'b110_001_1111111110;  // bne r1, #-2  (se contador≠0, volta para add)
+            16'h0005: instruction = 16'b110_001_0000000001;  // bne r1, #1 (pula quando r1=0)
             
             // Mostrar resultado
             16'h0006: instruction = 16'b100_000_0000000000;  // out r0       (mostra soma = 15)

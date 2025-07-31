@@ -102,7 +102,6 @@ always @(*) begin
                         end
                         OUT: begin
                             selReg = {1'b0, RX};
-                            bus_enable = 1'b1;   
                         end
                         BNE: begin
                             selReg = {1'b0, RX}; // Mantém RX selecionado para teste
@@ -130,7 +129,7 @@ always @(*) begin
                             selReg = {1'b0, RX};     // Mantém RX para teste
                             pc_enable = 1'b1;        // Habilita atualização do PC
                             // Se RX != 0, faz desvio (carrega novo PC); se RX = 0, incrementa
-                            pc_load = (mux_out != 16'b0) ? 1'b1 : 1'b0; 
+                            pc_load = (mux_out == 16'b0) ? 1'b1 : 1'b0; 
                         end
                     endcase
                 end
