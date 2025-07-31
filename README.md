@@ -19,7 +19,7 @@ ProcessadorV1/
 - [GTKWave](http://gtkwave.sourceforge.net/)
 
 ## Como usar
-Aqui está a seção de instruções reformatada conforme seu exemplo:
+
 
 ## Conjunto de Instruções
 
