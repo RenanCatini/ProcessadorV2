@@ -48,14 +48,13 @@ always @(*) begin
     bus_enable = 1'b0;
     pc_enable = 1'b0;
     pc_load = 1'b0;
-    halt = 1'b0;            // NOVO: reset do halt
+    halt = 1'b0;           
     
     if(resetn == 1'b1) begin
         clear = 1; // Reset no contador
     end else begin
         clear = 0;
         
-        // NOVO: Detecta instrução HALT em qualquer ciclo
         if(opcode == HLT) begin
             halt = 1'b1;  // Ativa sinal de halt
             // Não atualiza PC nem faz mais nada
